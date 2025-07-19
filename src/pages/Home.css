@@ -1,0 +1,125 @@
+.home {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--primary-black) 0%, #1a1a1a 100%);
+  color: var(--white);
+  padding: var(--spacing-xxl) 0;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: var(--font-3xl);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  color: var(--white);
+}
+
+.highlight {
+  color: var(--primary-yellow);
+}
+
+.hero-description {
+  font-size: var(--font-lg);
+  color: #cccccc;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+/* Quick Features Section */
+.quick-features {
+  padding: var(--spacing-xxl) 0;
+  background: var(--white);
+}
+
+.features-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: 1fr;
+}
+
+.feature-card {
+  text-align: center;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  background: #f9f9f9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.feature-icon {
+  font-size: var(--font-4xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature-card h3 {
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature-card p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Tablet styles */
+@media (min-width: 640px) {
+  .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: var(--font-4xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: var(--font-5xl);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero {
+    min-height: 80vh;
+  }
+}

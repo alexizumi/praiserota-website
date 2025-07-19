@@ -1,19 +1,44 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
-        <header style={{ background: '#000', color: '#FFD700', padding: '1rem' }}>
-            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link to="/" style={{ color: '#FFD700', textDecoration: 'none', fontSize: '1.5rem', fontWeight: 'bold' }}>
-                    Praise Rota
-                </Link>
-                <ul style={{ display: 'flex', listStyle: 'none', gap: '2rem', margin: 0, padding: 0 }}>
-                    <li><Link to="/" style={{ color: '#FFD700', textDecoration: 'none' }}>Home</Link></li>
-                    <li><Link to="/features" style={{ color: '#FFD700', textDecoration: 'none' }}>Features</Link></li>
-                    <li><Link to="/try-it" style={{ color: '#FFD700', textDecoration: 'none' }}>Try It</Link></li>
-                    <li><Link to="/contact" style={{ color: '#FFD700', textDecoration: 'none' }}>Contact Us</Link></li>
-                </ul>
-            </nav>
+        <header className="header">
+            <div className="container">
+                <nav className="nav">
+                    <Link to="/" className="logo">
+                        Praise Rota
+                    </Link>
+
+                    {/* Mobile menu button */}
+                    <button
+                        className="menu-toggle"
+                        onClick={toggleMenu}
+                        aria-label="Toggle menu"
+                    >
+                        <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </button>
+
+                    {/* Navigation menu */}
+                    <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+                        <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+                        <li><Link to="/features" onClick={() => setIsMenuOpen(false)}>Features</Link></li>
+                        <li><Link to="/try-it" onClick={() => setIsMenuOpen(false)}>Try It</Link></li>
+                        <li><Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
     );
 };
