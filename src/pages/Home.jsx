@@ -16,8 +16,8 @@ const Home = () => {
                             Create rotas, manage availability, and keep your worship teams organised with ease.
                         </p>
                         <div className="hero-actions">
-                            <a href="/try-it" className="btn btn-primary">
-                                Start Free Trial
+                            <a href="/early-access" className="btn btn-primary">
+                                Join Beta Program
                             </a>
                             <a href="/features" className="btn btn-secondary">
                                 See How It Works
@@ -25,11 +25,11 @@ const Home = () => {
                         </div>
                         <div className="hero-stats">
                             <div className="stat">
-                                <span className="stat-number">500+</span>
+                                <span className="stat-number">10+</span>
                                 <span className="stat-label">Churches</span>
                             </div>
                             <div className="stat">
-                                <span className="stat-number">10k+</span>
+                                <span className="stat-number">50+</span>
                                 <span className="stat-label">Team Members</span>
                             </div>
                             <div className="stat">
@@ -111,7 +111,7 @@ const Home = () => {
             </section>
 
             {/* Social Proof */}
-            <section className="testimonials">
+            {/* <section className="testimonials">
                 <div className="container">
                     <div className="section-header">
                         <h2>Trusted by Churches Worldwide</h2>
@@ -147,7 +147,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* CTA Section */}
             <section className="cta-section">
@@ -156,10 +156,10 @@ const Home = () => {
                         <h2>Ready to Transform Your Worship Team Management?</h2>
                         <p>Join hundreds of churches already using Praise Rota to streamline their worship team scheduling.</p>
                         <div className="cta-actions">
-                            <a href="/try-it" className="btn btn-primary btn-large">
-                                Start Your Free Trial
+                            <a href="/early-access" className="btn btn-primary btn-large">
+                                Join Our Beta Program
                             </a>
-                            <p className="cta-note">No credit card required • 14-day free trial • Setup in minutes</p>
+                            <p className="cta-note">100% Free • No credit card required • Founding member benefits</p>
                         </div>
                     </div>
                 </div>

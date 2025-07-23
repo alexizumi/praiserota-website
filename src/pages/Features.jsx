@@ -30,7 +30,21 @@ const Features = () => {
                             </ul>
                         </div>
                         <div className="feature-image">
-                            <div className="mockup-placeholder">📅 Rota Builder Interface</div>
+                            <div className="screenshot-container">
+                                <img
+                                    src="/src/assets/images/screenshots/rota-builder.png"
+                                    alt="Praise Rota scheduling interface showing drag-and-drop rota builder"
+                                    className="feature-screenshot"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display = 'flex';
+                                    }}
+                                />
+                                <div className="screenshot-placeholder" style={{ display: 'none' }}>
+                                    📅 Rota Builder Interface
+                                    <span className="placeholder-note">Screenshot coming soon</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -48,7 +62,21 @@ const Features = () => {
                             </ul>
                         </div>
                         <div className="feature-image">
-                            <div className="mockup-placeholder">📱 Mobile Availability Screen</div>
+                            <div className="screenshot-container">
+                                <img
+                                    src="/src/assets/images/screenshots/mobile-availability.png"
+                                    alt="Mobile app availability screen showing calendar interface"
+                                    className="feature-screenshot mobile-screenshot"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display = 'flex';
+                                    }}
+                                />
+                                <div className="screenshot-placeholder mobile-placeholder" style={{ display: 'none' }}>
+                                    📱 Mobile Availability Screen
+                                    <span className="placeholder-note">Screenshot coming soon</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -66,7 +94,21 @@ const Features = () => {
                             </ul>
                         </div>
                         <div className="feature-image">
-                            <div className="mockup-placeholder">👥 Team Management Dashboard</div>
+                            <div className="screenshot-container">
+                                <img
+                                    src="/src/assets/images/screenshots/team-management.png"
+                                    alt="Team management dashboard showing member profiles and roles"
+                                    className="feature-screenshot"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display = 'flex';
+                                    }}
+                                />
+                                <div className="screenshot-placeholder" style={{ display: 'none' }}>
+                                    👥 Team Management Dashboard
+                                    <span className="placeholder-note">Screenshot coming soon</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,59 +156,29 @@ const Features = () => {
                 </div>
             </section>
 
-            {/* Pricing Preview */}
+            {/* Beta Pricing Preview */}
             <section className="pricing-preview">
                 <div className="container">
                     <div className="pricing-content">
-                        <h2>Simple, Transparent Pricing</h2>
-                        <p>Choose the plan that fits your church size and needs</p>
-                        <div className="pricing-cards">
-                            <div className="pricing-card">
-                                <h3>Starter</h3>
-                                <div className="price">
-                                    <span className="currency">£</span>
-                                    <span className="amount">9</span>
-                                    <span className="period">/month</span>
-                                </div>
-                                <ul>
-                                    <li>Up to 15 team members</li>
-                                    <li>Basic scheduling</li>
-                                    <li>Mobile app access</li>
-                                    <li>Email support</li>
-                                </ul>
-                                <a href="/try-it" className="btn btn-secondary">Start Free Trial</a>
+                        <h2>Join Our Beta Program</h2>
+                        <p>Get complete access while helping us build the perfect solution</p>
+                        <div className="beta-pricing-card">
+                            <div className="beta-badge">Limited Time</div>
+                            <h3>Beta Access</h3>
+                            <div className="price">
+                                <span className="currency">£</span>
+                                <span className="amount">0</span>
+                                <span className="period">/month</span>
                             </div>
-                            <div className="pricing-card featured">
-                                <div className="popular-badge">Most Popular</div>
-                                <h3>Growth</h3>
-                                <div className="price">
-                                    <span className="currency">£</span>
-                                    <span className="amount">19</span>
-                                    <span className="period">/month</span>
-                                </div>
-                                <ul>
-                                    <li>Up to 50 team members</li>
-                                    <li>Advanced scheduling</li>
-                                    <li>Analytics & reporting</li>
-                                    <li>Priority support</li>
-                                </ul>
-                                <a href="/try-it" className="btn btn-primary">Start Free Trial</a>
-                            </div>
-                            <div className="pricing-card">
-                                <h3>Enterprise</h3>
-                                <div className="price">
-                                    <span className="currency">£</span>
-                                    <span className="amount">39</span>
-                                    <span className="period">/month</span>
-                                </div>
-                                <ul>
-                                    <li>Unlimited team members</li>
-                                    <li>Multiple locations</li>
-                                    <li>Custom integrations</li>
-                                    <li>Dedicated support</li>
-                                </ul>
-                                <a href="/contact" className="btn btn-secondary">Contact Sales</a>
-                            </div>
+                            <ul>
+                                <li>✅ Full access to all features</li>
+                                <li>✅ Founding member benefits</li>
+                                <li>✅ Direct input on development</li>
+                                <li>✅ Priority support & training</li>
+                                <li>✅ Lock in special pricing</li>
+                            </ul>
+                            <a href="/early-access" className="btn btn-primary btn-large">Join Beta Program</a>
+                            <p className="beta-note">50+ churches already testing • No credit card required</p>
                         </div>
                     </div>
                 </div>

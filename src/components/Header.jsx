@@ -57,11 +57,11 @@ const Header = () => {
                         </li>
                         <li>
                             <Link
-                                to="/try-it"
+                                to="/early-access"
                                 onClick={() => setIsMenuOpen(false)}
-                                className={isActive('/try-it') ? 'active' : ''}
+                                className={isActive('/early-access') || isActive('/try-it') ? 'active' : ''}
                             >
-                                Try It
+                                <span className="beta-nav-label">Join Beta</span>
                             </Link>
                         </li>
                         <li>

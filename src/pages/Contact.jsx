@@ -10,6 +10,8 @@ const Contact = () => {
         message: '',
         contactReason: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
 
     const handleInputChange = (e) => {
         setFormData({
@@ -18,11 +20,48 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here
-        console.log('Contact form submitted:', formData);
-        alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            const response = await fetch('https://formspree.io/f/mnnzppvq', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    churchName: formData.churchName,
+                    contactReason: formData.contactReason,
+                    subject: formData.subject,
+                    message: formData.message,
+                    _subject: `Contact Form: ${formData.subject}`,
+                    _replyto: formData.email
+                })
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                setFormData({
+                    name: '',
+                    email: '',
+                    churchName: '',
+                    subject: '',
+                    message: '',
+                    contactReason: ''
+                });
+            } else {
+                setSubmitStatus('error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -48,6 +87,18 @@ const Contact = () => {
                                 <p>We typically respond within 24 hours</p>
                             </div>
 
+                            {/* Success/Error Messages */}
+                            {submitStatus === 'success' && (
+                                <div className="form-message success">
+                                    <p>✅ Thank you for your message! We'll get back to you within 24 hours.</p>
+                                </div>
+                            )}
+                            {submitStatus === 'error' && (
+                                <div className="form-message error">
+                                    <p>❌ Sorry, there was an error sending your message. Please try again or email us directly at alex@praiserota.com</p>
+                                </div>
+                            )}
+
                             <form className="contact-form" onSubmit={handleSubmit}>
                                 <div className="form-row">
                                     <div className="form-group">
@@ -60,6 +111,7 @@ const Contact = () => {
                                             onChange={handleInputChange}
                                             required
                                             placeholder="John Smith"
+                                            disabled={isSubmitting}
                                         />
                                     </div>
                                     <div className="form-group">
@@ -72,6 +124,7 @@ const Contact = () => {
                                             onChange={handleInputChange}
                                             required
                                             placeholder="john@gracechurch.org"
+                                            disabled={isSubmitting}
                                         />
                                     </div>
                                 </div>
@@ -86,6 +139,7 @@ const Contact = () => {
                                             value={formData.churchName}
                                             onChange={handleInputChange}
                                             placeholder="Grace Community Church"
+                                            disabled={isSubmitting}
                                         />
                                     </div>
                                     <div className="form-group">
@@ -96,14 +150,15 @@ const Contact = () => {
                                             value={formData.contactReason}
                                             onChange={handleInputChange}
                                             required
+                                            disabled={isSubmitting}
                                         >
                                             <option value="">Select a reason</option>
-                                            <option value="trial-support">Trial setup assistance</option>
+                                            <option value="beta-access">Beta access request</option>
+                                            <option value="beta-support">Beta support & feedback</option>
                                             <option value="technical-support">Technical support</option>
-                                            <option value="billing">Billing questions</option>
                                             <option value="feature-request">Feature request</option>
-                                            <option value="enterprise">Enterprise enquiry</option>
                                             <option value="partnership">Partnership opportunity</option>
+                                            <option value="media-press">Media & Press</option>
                                             <option value="general">General enquiry</option>
                                         </select>
                                     </div>
@@ -119,6 +174,7 @@ const Contact = () => {
                                         onChange={handleInputChange}
                                         required
                                         placeholder="Brief description of your enquiry"
+                                        disabled={isSubmitting}
                                     />
                                 </div>
 
@@ -132,12 +188,24 @@ const Contact = () => {
                                         required
                                         rows="6"
                                         placeholder="Please provide details about your enquiry..."
+                                        disabled={isSubmitting}
                                     ></textarea>
                                 </div>
 
                                 <div className="form-actions">
-                                    <button type="submit" className="btn btn-primary btn-large">
-                                        Send Message
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary btn-large"
+                                        disabled={isSubmitting}
+                                    >
+                                        {isSubmitting ? (
+                                            <>
+                                                <span className="loading-spinner"></span>
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            'Send Message'
+                                        )}
                                     </button>
                                 </div>
                             </form>
@@ -157,15 +225,15 @@ const Contact = () => {
                                 <div className="contact-item">
                                     <div className="contact-icon">🚨</div>
                                     <div className="contact-details">
-                                        <h4>Technical Support</h4>
-                                        <p>Priority support for existing customers within 4 hours</p>
+                                        <h4>Beta Support</h4>
+                                        <p>Priority support for beta testers within 4 hours</p>
                                     </div>
                                 </div>
                                 <div className="contact-item">
-                                    <div className="contact-icon">📞</div>
+                                    <div className="contact-icon">💡</div>
                                     <div className="contact-details">
-                                        <h4>Phone Support</h4>
-                                        <p>Available for Enterprise customers by appointment</p>
+                                        <h4>Feature Requests</h4>
+                                        <p>We love feedback! All suggestions reviewed within 48 hours</p>
                                     </div>
                                 </div>
                             </div>
@@ -177,21 +245,21 @@ const Contact = () => {
                                         <div className="method-icon">📧</div>
                                         <div className="method-content">
                                             <h4>Email</h4>
-                                            <p>hello@praiserota.com</p>
+                                            <p>alex@praiserota.com</p>
                                         </div>
                                     </div>
                                     <div className="contact-method">
                                         <div className="method-icon">💬</div>
                                         <div className="method-content">
-                                            <h4>Live Chat</h4>
-                                            <p>Available in the app for customers</p>
+                                            <h4>Beta Community</h4>
+                                            <p>Join our beta testers for direct feedback</p>
                                         </div>
                                     </div>
                                     <div className="contact-method">
                                         <div className="method-icon">📚</div>
                                         <div className="method-content">
                                             <h4>Help Centre</h4>
-                                            <p>Find answers to common questions</p>
+                                            <p>Coming soon - beta documentation available</p>
                                         </div>
                                     </div>
                                 </div>
@@ -231,28 +299,28 @@ const Contact = () => {
                     </div>
                     <div className="faq-grid">
                         <div className="faq-item">
+                            <h4>How do I join the beta program?</h4>
+                            <p>Simply visit our Early Access page and sign up! We're currently accepting churches of all sizes for our free beta testing program.</p>
+                        </div>
+                        <div className="faq-item">
+                            <h4>Is the beta really completely free?</h4>
+                            <p>Yes! Beta access is 100% free with no hidden costs. You'll also get founding member benefits when we launch our paid plans.</p>
+                        </div>
+                        <div className="faq-item">
                             <h4>How quickly can we get started?</h4>
-                            <p>Most churches are up and running within 24 hours of signing up. We provide free setup assistance to import your team and create your first rota.</p>
+                            <p>Most churches are up and running within 24 hours of joining the beta. We provide free setup assistance and training.</p>
                         </div>
                         <div className="faq-item">
-                            <h4>Do you offer training for our team?</h4>
-                            <p>Yes! We provide free onboarding sessions and training materials. Our team can also conduct virtual training sessions for larger churches.</p>
-                        </div>
-                        <div className="faq-item">
-                            <h4>What if we need custom features?</h4>
-                            <p>We're always improving Praise Rota based on customer feedback. Enterprise customers can discuss custom development options.</p>
-                        </div>
-                        <div className="faq-item">
-                            <h4>Is there a discount for multiple churches?</h4>
-                            <p>Yes! We offer special pricing for denominations, church networks, and multi-site churches. Contact us for details.</p>
+                            <h4>What if we find bugs or need features?</h4>
+                            <p>That's exactly what we want! Beta testers get priority support and direct input on new features. Your feedback shapes the product.</p>
                         </div>
                         <div className="faq-item">
                             <h4>Can we migrate from our current system?</h4>
                             <p>Absolutely! We can help you import data from spreadsheets, other scheduling apps, or manual systems. Migration assistance is included.</p>
                         </div>
                         <div className="faq-item">
-                            <h4>What support is available after setup?</h4>
-                            <p>All customers get access to our help centre, email support, and in-app chat. Enterprise customers also get phone support and dedicated account management.</p>
+                            <h4>What happens after the beta ends?</h4>
+                            <p>Beta testers will receive special founding member pricing and benefits. We'll give plenty of notice before any changes to the service.</p>
                         </div>
                     </div>
                 </div>

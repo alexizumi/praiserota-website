@@ -133,7 +133,36 @@
   padding-left: var(--spacing-lg);
 }
 
-/* Desktop styles */
+/* Active link styles */
+.nav-menu a.active {
+  color: var(--primary-yellow);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.nav-menu a.active:hover {
+  color: var(--primary-yellow);
+}
+
+/* Beta navigation label */
+.beta-nav-label {
+  position: relative;
+}
+
+.beta-nav-label::after {
+  content: 'BETA';
+  position: absolute;
+  top: -8px;
+  right: -25px;
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+/* Desktop styles - THIS IS THE KEY FIX */
 @media (min-width: 768px) {
   .menu-toggle {
     display: none;
@@ -142,6 +171,7 @@
   .nav-menu {
     position: static;
     display: flex;
+    flex-direction: row;
     gap: var(--spacing-lg);
     transform: none;
     opacity: 1;
@@ -149,18 +179,38 @@
     background: none;
     border: none;
     padding: 0;
+    margin: 0;
+  }
+
+  .nav-menu li {
+    margin: 0;
   }
 
   .nav-menu a {
+    display: inline-block;
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-base);
     border: none;
     border-radius: var(--border-radius);
+    background: none;
   }
 
   .nav-menu a:hover {
     background: rgba(255, 215, 0, 0.1);
     padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+
+  .nav-menu a.active {
+    background: rgba(255, 215, 0, 0.15);
+    border-radius: var(--border-radius);
+  }
+
+  .beta-nav-label::after {
+    top: -10px;
+    right: -30px;
+    font-size: 9px;
+    padding: 3px 5px;
   }
 }
 
@@ -175,23 +225,5 @@
 
   .nav-menu {
     gap: var(--spacing-xl);
-  }
-}
-
-/* Active link styles */
-.nav-menu a.active {
-  color: var(--primary-yellow);
-  background: rgba(255, 215, 0, 0.1);
-}
-
-.nav-menu a.active:hover {
-  color: var(--primary-yellow);
-}
-
-/* Desktop active link styles */
-@media (min-width: 768px) {
-  .nav-menu a.active {
-    background: rgba(255, 215, 0, 0.15);
-    border-radius: var(--border-radius);
   }
 }
