@@ -1,0 +1,17 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Handle client-side routing
+# If the requested resource doesn't exist as a file or directory,
+# serve the index.html file instead
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# Optional: Force HTTPS (uncomment if needed)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Optional: Redirect www to non-www (or vice versa)
+# RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
