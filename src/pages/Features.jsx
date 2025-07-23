@@ -32,7 +32,7 @@ const Features = () => {
                         <div className="feature-image">
                             <div className="screenshot-container">
                                 <img
-                                    src="/src/assets/images/screenshots/rota-builder.png"
+                                    src="/images/screenshots/rota-builder.png"
                                     alt="Praise Rota scheduling interface showing drag-and-drop rota builder"
                                     className="feature-screenshot"
                                     onError={(e) => {
@@ -64,7 +64,7 @@ const Features = () => {
                         <div className="feature-image">
                             <div className="screenshot-container">
                                 <img
-                                    src="/src/assets/images/screenshots/mobile-availability.png"
+                                    src="/images/screenshots/mobile-availability.png"
                                     alt="Mobile app availability screen showing calendar interface"
                                     className="feature-screenshot mobile-screenshot"
                                     onError={(e) => {
@@ -96,7 +96,7 @@ const Features = () => {
                         <div className="feature-image">
                             <div className="screenshot-container">
                                 <img
-                                    src="/src/assets/images/screenshots/team-management.png"
+                                    src="/images/screenshots/teammanagement.png"
                                     alt="Team management dashboard showing member profiles and roles"
                                     className="feature-screenshot"
                                     onError={(e) => {

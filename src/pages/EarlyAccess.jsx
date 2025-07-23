@@ -41,7 +41,7 @@ const EarlyAccess = () => {
 
         try {
             console.log('Submitting form data:', formData);
-            const response = await fetch('https://formspree.io/f/manbenvv', {
+            const response = await fetch('https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_BETA_ID}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
